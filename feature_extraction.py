@@ -11,7 +11,7 @@
 #!/usr/bin/env python
 
 import string
-
+import math
 import fileinput
 
 if __name__ == '__main__':
@@ -29,12 +29,14 @@ if __name__ == '__main__':
 
     while (entry):
         entry = entry.split()
-        feature = []
-        for i in range(Attributes):
+        feature = [string.atoi(entry[-1])-1]
+        for i in range(Attributes-1):
             print i
             attrvec = [0]*AttributeBranches[i]
             if AttributeBranches[i] == 1:
                 attrvec[0] = string.atoi(entry[i])
+		if (i==4): attrvec[0] = int(round(math.log(attrvec[0])*10))
+		if (i==1 or i==12): attrvec.append(int(round(math.log(attrvec[0])*10)))
             elif i<9:
                 branch = string.atoi(entry[i][2:]) - AttributeInitial[i]
                 attrvec[branch] = 1
@@ -42,6 +44,7 @@ if __name__ == '__main__':
                 branch = string.atoi(entry[i][3:]) - AttributeInitial[i]
                 attrvec[branch] = 1
             feature.extend(attrvec)
+	#feature[2],feature[5],feature[13] = int(math.log(feature[2])),int(math.log(feature[5])),int(math.log(feature[13]))
 
         print feature
 	for i in range(len(feature)): feature[i] = str(feature[i])

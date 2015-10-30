@@ -6,8 +6,11 @@ import re
 Data munging tools
 '''
 
-def loadData(trainfile='data/txt2int.txt'):
-    tr=pd.read_csv(trainfile)
+#def loadData(trainfile='data/txt2int.txt'):
+#    tr=pd.read_csv(trainfile,header=None,sep=',')
+def loadData(trainfile='data/features.txt'):
+    tr=pd.read_csv(trainfile,header=None,sep=' ')
+
     # test=pd.read_csv(testfile)
     return tr
 
