@@ -1,17 +1,17 @@
+import sys
 import numpy as np
-import mungetools as mg
+import pandas as pd
 from sklearn.ensemble import RandomForestClassifier as rfc
 
 # load data into pandas data frame
 # trdata,testdata=mg.loadData()
-trdata=mg.loadData()
+# trdata=mg.loadData()
 # get the id's for the test set
 # testid = np.array(testdata.UserID)
 
 # testdata = testdata.drop('UserID',axis=1)
 
-# initialize classifier
-
+# initialize classifier 
 
 depthlist = [3,5,10,15,20,50,100]
 

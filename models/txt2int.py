@@ -1,56 +1,21 @@
 #-------------------------------------------------------------------------------
-# Name:        feature_extraction
+# Name:        module1
 # Purpose:
 #
-# Author:      WangJuntao
+# Author:      GuoCheng
 #
 # Created:     19/06/2015
-# Copyright:   (c) WangJuntao 2015
+# Copyright:   (c) GuoCheng 2015
 # Licence:     <your licence>
 #-------------------------------------------------------------------------------
 #!/usr/bin/env python
 
-import string
-
 import fileinput
 
 if __name__ == '__main__':
+    file_data = open("data/credit-g.txt").readlines()
 
-    Attributes = 21 #including the tag dimension
-
-    AttributeBranches = [4,1,5,11,1,5,5,1,5,3,1,4,1,3,3,1,4,1,2,2,1]
-
-    AttributeInitial = [1,0,0,0,0,1,1,0,1,1,0,1,0,1,1,0,1,0,1,1,1]
-
-    raw_data = open("data/german.data.txt")
-    feature_data = open("data/features.txt","w+")
-
-    entry = raw_data.readline()
-
-    while (entry):
-        entry = entry.split()
-        feature = []
-        for i in range(Attributes):
-            print i
-            attrvec = [0]*AttributeBranches[i]
-            if AttributeBranches[i] == 1:
-                attrvec[0] = string.atoi(entry[i])
-            elif i<9:
-                branch = string.atoi(entry[i][2:]) - AttributeInitial[i]
-                attrvec[branch] = 1
-            else: 
-                branch = string.atoi(entry[i][3:]) - AttributeInitial[i]
-                attrvec[branch] = 1
-            feature.extend(attrvec)
-
-        print feature
-	for i in range(len(feature)): feature[i] = str(feature[i])
-        feature_data.write(' '.join(feature)+'\n')
-	entry = raw_data.readline()
-
-    exit()
-
-
+    f_out = open("data/txt2int.txt","w+")
 
     infoDict = {}
 
